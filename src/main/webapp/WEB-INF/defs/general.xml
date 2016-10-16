@@ -11,4 +11,9 @@
     <put-attribute name="title" value="anl-demo" />
     <put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
   </definition>
+  
+   <definition name="config" extends="common">
+    <put-attribute name="title" value="anl-demo" />
+    <put-attribute name="body" value="/WEB-INF/jsp/config.jsp" />
+  </definition>
 </tiles-definitions>

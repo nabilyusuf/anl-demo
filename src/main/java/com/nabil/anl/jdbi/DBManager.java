@@ -5,9 +5,12 @@ import javax.management.Query;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
+
 import org.skife.jdbi.v2.DBI;
 import org.skife.jdbi.v2.Handle;
 
+import com.nabil.anl.config.Configuration;
 import com.nabil.anl.model.Book;
 import com.nabil.anl.model.Person;
 
@@ -15,7 +18,7 @@ public class DBManager {
 	public static void main(String[] args) {
 		 Person p = new Person();
 	
-		//getAllPersonList();
+		getAllPersonList();
 		/* String sql = "SELECT count(*) as count FROM NABIL.P_B_LEND";
 		 List<Map<String, Object>> rs=  queryEx(sql);
 		 
@@ -44,6 +47,7 @@ public class DBManager {
 				 p.setpMobile(m.get("P_MOBILE") +"");
 				 p.setpEmail(m.get("P_EMAIL") +"");
 				 p.setbCount(m.get("count") +"");
+				 System.out.printf("%d ", m.get("count"));
 				 pList.add(p);
 	         }
 		 }
@@ -87,16 +91,23 @@ public class DBManager {
 	
 	
 	private static List<Map<String, Object>> queryEx (String sql) {
-
+		Properties props=Configuration.getpropertyfile();
         Handle handle = null;
         List<Map<String, Object>> rs = null;
-        DBI dbi = new DBI("jdbc:h2:~/test", "sa", "sa");
-       
+        String dpPath = props.getProperty("dbfilepath");
+		String user = props.getProperty("dbuser");
+		String pwds = props.getProperty("dbpassword");
+		System.out.println("in dpPath " + dpPath);
+		
+        DBI dbi = new DBI(dpPath, user, pwds);
         try {
             handle  = dbi.open();
              rs = handle.select(sql);
-
-        } finally {
+             System.out.println("in queryEx");
+             handle.close();
+        }catch (Exception e) {
+			e.printStackTrace();
+		} finally {
             if (handle != null) {
                 handle.close();
             }
