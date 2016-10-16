@@ -17,7 +17,7 @@
    <footer class="footer">
       <div class="container">
       <br>
-        <p class="text-muted"> &copy; Nabil Australian Library Demo</p>
+        <p class="text-muted"> &copy; National Library of Australia Demo</p>
       </div>
     </footer>
    

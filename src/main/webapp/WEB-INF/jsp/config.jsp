@@ -81,6 +81,8 @@ And  <b>D:/DataBase</b> being the path
 <br><br>
 <strong>-</strong>&nbsp;Enter the user name and password for the database 
 <br>
+
+<sub>You can contact me at 0404401454 if you need any specific enhancements.</sub>
  </div> </div>
 
 </div>
